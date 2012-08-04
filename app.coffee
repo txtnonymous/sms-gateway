@@ -20,3 +20,33 @@ HelloModule =
     resp.serveJSON 'Hello, world!'
 
 apiserver.addModule 'v1', 'hello', HelloModule
+
+
+sendMessage = (destination, message) ->
+  # TODO
+
+getOriginator = (details) ->
+  # TODO
+
+getDestination = (details) ->
+  # TODO
+
+sendErrorResponse = (from, error) ->
+  # TODO
+
+getForwardedMessage = (details, from, to) ->
+  # TODO
+
+updateTimestamps = (arr) ->
+  # TODO
+
+
+
+onMessageRecieved = (details) ->
+  from = getOriginator(details)
+  to = getDestination(details)
+  if to == null
+    sendErrorResponse(from, 'no destination: use a hastag like #secondfriend')
+    return
+  sendMessage(to, getForwardedMessage(details, from, to))
+  updateTimestamps([from, to])
