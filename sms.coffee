@@ -2,7 +2,7 @@ config = require 'config'
 
 Twilio = (incoming_sms_cb) ->
   # incoming_sms_cb is a callback function that gets called on every incoming sms
-  
+
   # Configuration options
   sendsms = (phone_number, message) ->
     phone.sendSms phone_number, message, null, (sms) ->
